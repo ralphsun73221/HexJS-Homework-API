@@ -25,7 +25,7 @@ BUTTON_GROUP.addEventListener("click", e => {
 
 // 搜尋
 BUTTON_SEARCH.addEventListener("click", e => {
-	const FILTER_INPUT = BUTTON_SEARCH.querySelector("INPUT"); 
+	let FILTER_INPUT = BUTTON_SEARCH.querySelector("INPUT"); 
 	if (e.target.nodeName === "BUTTON") {
 		if (FILTER_INPUT.value === "") {
 			alert("請輸入作物名稱！");
