@@ -5,13 +5,13 @@ const URL = "https://shannon945.github.io/farm_produce/data.json";
 const PRODUCTS_LIST = document.querySelector(".showList");
 const BUTTON_GROUP = document.querySelector(".button-group");
 const BUTTON_SEARCH = document.querySelector(".search-group");
-
+const SELECT = document.querySelector("#js-select");
 
 let data = []; // 初始化陣列
 getData(); // 執行取得資料 function
 
 /* Event */
-// 點擊 tpye 後執行過濾資料 function
+// tab
 BUTTON_GROUP.addEventListener("click", e => {
 	if (e.target.nodeName === "BUTTON") {
 		let tab = document.querySelectorAll(".button-group button");
@@ -23,7 +23,7 @@ BUTTON_GROUP.addEventListener("click", e => {
 	};
 });
 
-// 搜尋
+// search
 BUTTON_SEARCH.addEventListener("click", e => {
 	let FILTER_INPUT = BUTTON_SEARCH.querySelector("INPUT"); 
 	if (e.target.nodeName === "BUTTON") {
@@ -43,6 +43,10 @@ BUTTON_SEARCH.addEventListener("click", e => {
 		};
 	};
 });
+
+// select
+
+
 
 /* fuctions */
 // 取得資料
