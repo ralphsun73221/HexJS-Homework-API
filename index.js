@@ -5,13 +5,13 @@ const URL = "https://shannon945.github.io/farm_produce/data.json";
 const PRODUCTS_LIST = document.querySelector(".showList");
 const BUTTON_GROUP = document.querySelector(".button-group");
 const BUTTON_SEARCH = document.querySelector(".search-group");
-
+const SELECT = document.querySelector("#js-select");
 
 let data = []; // 初始化陣列
 getData(); // 執行取得資料 function
 
 /* Event */
-// 點擊 tpye 後執行過濾資料 function
+// tab
 BUTTON_GROUP.addEventListener("click", e => {
 	if (e.target.nodeName === "BUTTON") {
 		let tab = document.querySelectorAll(".button-group button");
@@ -23,7 +23,7 @@ BUTTON_GROUP.addEventListener("click", e => {
 	};
 });
 
-// 搜尋
+// search
 BUTTON_SEARCH.addEventListener("click", e => {
 	let FILTER_INPUT = BUTTON_SEARCH.querySelector("INPUT"); 
 	if (e.target.nodeName === "BUTTON") {
@@ -42,6 +42,34 @@ BUTTON_SEARCH.addEventListener("click", e => {
 			renderData(filterData);
 		};
 	};
+});
+
+// select
+SELECT.addEventListener("change", e => {
+	switch (e.target.value) {
+		case "依上價排序":
+			selectChange("上價");
+			break;
+		case "依中價排序":
+			selectChange("中價");
+			break;
+		case "依下價排序":
+			selectChange("下價");
+			break;
+		case "依平均價排序":
+			selectChange("平均價");
+			break;
+		case "依交易量排序":
+			selectChange("交易量");
+			break;
+		default:
+			getData();
+			break;
+	};
+	function selectChange(value) {
+		data.sort((a, b) => a[value] - b[value])
+	};
+	renderData(data);
 });
 
 /* fuctions */
