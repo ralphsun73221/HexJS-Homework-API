@@ -45,8 +45,32 @@ BUTTON_SEARCH.addEventListener("click", e => {
 });
 
 // select
-
-
+SELECT.addEventListener("change", e => {
+	switch (e.target.value) {
+		case "依上價排序":
+			selectChange("上價");
+			break;
+		case "依中價排序":
+			selectChange("中價");
+			break;
+		case "依下價排序":
+			selectChange("下價");
+			break;
+		case "依平均價排序":
+			selectChange("平均價");
+			break;
+		case "依交易量排序":
+			selectChange("交易量");
+			break;
+		default:
+			getData();
+			break;
+	};
+	function selectChange(value) {
+		data.sort((a, b) => a[value] - b[value])
+	};
+	renderData(data);
+});
 
 /* fuctions */
 // 取得資料
