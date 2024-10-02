@@ -6,6 +6,7 @@ const PRODUCTS_LIST = document.querySelector(".showList");
 const BUTTON_GROUP = document.querySelector(".button-group");
 const BUTTON_SEARCH = document.querySelector(".search-group");
 const SELECT = document.querySelector("#js-select");
+const SORT = document.querySelector(".js-sort-advanced");
 
 let data = []; // 初始化陣列
 getData(); // 執行取得資料 function
@@ -71,6 +72,20 @@ SELECT.addEventListener("change", e => {
 	};
 	renderData(data);
 });
+
+// sort
+SORT.addEventListener("click", e => {
+	if(e.target.nodeName === "I"){
+		let sortPrice = e.target.dataset.price;
+		let sortCaret = e.target.dataset.sort;
+		if(sortCaret === "up") {
+			data.sort((a, b) => b[sortPrice] - a[sortPrice])
+		} else {
+			data.sort((a, b) => a[sortPrice] - b[sortPrice])
+		}
+	}
+	renderData(data);
+})
 
 /* fuctions */
 // 取得資料

@@ -22,3 +22,13 @@
 
 - [作業細節](https://hackmd.io/@w4wBc9wkR4CvPsIeEWiLbg/S1XivuMAu/%2FqywznB85Q5qkhCcwyWTiGg)
 - 完成，但是一時間不知道要如何消除 input 裡面的 value，有參考之前 todo，但是不確定卡在那裡🫠
+
+### 1002
+
+#### 進階資料排序
+
+- [作業細節](https://hackmd.io/@w4wBc9wkR4CvPsIeEWiLbg/S1XivuMAu/%2FXuv_Ra75TCqFV2gk0vAMkg)
+- 進階排序完成
+- 但還有幾個我認為可以更好的地方：
+	1. 排序曬選會根據目前種類來排，而不是每次都用全部的資料
+	2. 價格排序也是可以根據目前的資料來排，而不是顯示全部的資料
