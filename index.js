@@ -28,7 +28,7 @@ BUTTON_GROUP.addEventListener("click", e => {
 
 // search
 BUTTON_SEARCH.addEventListener("click", e => {
-	let FILTER_INPUT = BUTTON_SEARCH.querySelector("INPUT"); 
+	let FILTER_INPUT = BUTTON_SEARCH.querySelector("INPUT");
 	if (e.target.nodeName === "BUTTON") {
 		if (FILTER_INPUT.value === "") {
 			alert("請輸入作物名稱！");
@@ -139,9 +139,15 @@ function renderData(showData) {
 // 過濾資料
 function dataFilter(e, type){
 	let filterDate = [];
-	filterDate = data.filter(i => {
-		return i.種類代碼 === type;
-	});
-	e.target.classList.add("active");
+	if(type === "N00") {
+		e.target.classList.add("active");
+		getData();
+	} else {
+  	filterDate = data.filter(i => {
+			return i.種類代碼 === type;
+		});
+		e.target.classList.add("active");
+	}
+
 	renderData(filterDate);
 };
