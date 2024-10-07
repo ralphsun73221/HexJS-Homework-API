@@ -2,9 +2,11 @@
 
 // JSON 檔案網址
 const URL = "https://shannon945.github.io/farm_produce/data.json";
+
 const PRODUCTS_LIST = document.querySelector(".showList");
 const BUTTON_GROUP = document.querySelector(".button-group");
 const BUTTON_SEARCH = document.querySelector(".search-group");
+const SEARCH_INPUT = BUTTON_SEARCH.querySelector("INPUT");
 const SELECT = document.querySelector("#js-select");
 const SORT = document.querySelector(".js-sort-advanced");
 
@@ -44,6 +46,15 @@ BUTTON_SEARCH.addEventListener("click", e => {
 		};
 	};
 });
+
+// search input
+SEARCH_INPUT.addEventListener("keydown", e => { // 輸入框 Event：讓 input 按下 Enter 也可以加入任務
+	if (e.code !== "Enter") {
+		return;
+	};
+	checkInput();
+});
+
 
 // select
 SELECT.addEventListener("change", e => {
@@ -97,6 +108,15 @@ function getData(){
 			renderData(data);
 	  });
 };
+
+// 檢查 input 是否為空值
+function checkInput() {
+	if(SEARCH_INPUT.value === "") {
+		alert("請輸入作物名稱！");
+		return;
+	};
+};
+
 
 // 算繪資料
 function renderData(showData) {
