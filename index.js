@@ -8,6 +8,7 @@ const BUTTON_GROUP = document.querySelector(".button-group");
 const BUTTON_SEARCH = document.querySelector(".search-group");
 const SEARCH_INPUT = BUTTON_SEARCH.querySelector("INPUT");
 const SELECT = document.querySelector("#js-select");
+const SELECT_MOBILE = document.querySelector("#js-moblie-select");
 const SORT = document.querySelector(".js-sort-advanced");
 
 let data = []; // 初始化陣列
@@ -58,6 +59,32 @@ SEARCH_INPUT.addEventListener("keydown", e => { // 輸入框 Event：讓 input �
 
 // select
 SELECT.addEventListener("change", e => {
+	sort(e);
+	renderData(data);
+});
+
+SELECT_MOBILE.addEventListener("change", e => {
+	sort(e);
+	renderData(data);
+});
+
+// sort
+SORT.addEventListener("click", e => {
+	if(e.target.nodeName === "I"){
+		let sortPrice = e.target.dataset.price;
+		let sortCaret = e.target.dataset.sort;
+		if(sortCaret === "up") {
+			data.sort((a, b) => b[sortPrice] - a[sortPrice])
+		} else {
+			data.sort((a, b) => a[sortPrice] - b[sortPrice])
+		}
+	}
+	renderData(data);
+})
+
+/* fuctions */
+// 排序
+function sort(e){
 	switch (e.target.value) {
 		case "依上價排序":
 			selectChange("上價");
@@ -82,23 +109,9 @@ SELECT.addEventListener("change", e => {
 		data.sort((a, b) => a[value] - b[value])
 	};
 	renderData(data);
-});
+}
 
-// sort
-SORT.addEventListener("click", e => {
-	if(e.target.nodeName === "I"){
-		let sortPrice = e.target.dataset.price;
-		let sortCaret = e.target.dataset.sort;
-		if(sortCaret === "up") {
-			data.sort((a, b) => b[sortPrice] - a[sortPrice])
-		} else {
-			data.sort((a, b) => a[sortPrice] - b[sortPrice])
-		}
-	}
-	renderData(data);
-})
 
-/* fuctions */
 // 取得資料
 function getData(){
 	axios
