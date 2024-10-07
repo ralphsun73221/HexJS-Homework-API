@@ -83,7 +83,7 @@ SORT.addEventListener("click", e => {
 })
 
 /* fuctions */
-// 排序
+// 排序資料
 function sort(e){
 	switch (e.target.value) {
 		case "依上價排序":
@@ -110,7 +110,6 @@ function sort(e){
 	};
 	renderData(data);
 }
-
 
 // 取得資料
 function getData(){
