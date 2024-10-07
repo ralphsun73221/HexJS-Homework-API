@@ -49,23 +49,20 @@ BUTTON_SEARCH.addEventListener("click", e => {
 });
 
 // search input
-SEARCH_INPUT.addEventListener("keydown", e => { // 輸入框 Event：讓 input 按下 Enter 也可以加入任務
+SEARCH_INPUT.addEventListener("keydown", e => {
 	if (e.code !== "Enter") {
 		return;
 	};
 	checkInput();
 });
 
-
 // select
 SELECT.addEventListener("change", e => {
 	sort(e);
-	renderData(data);
 });
 
 SELECT_MOBILE.addEventListener("change", e => {
 	sort(e);
-	renderData(data);
 });
 
 // sort
@@ -128,7 +125,6 @@ function checkInput() {
 		return;
 	};
 };
-
 
 // 算繪資料
 function renderData(showData) {
