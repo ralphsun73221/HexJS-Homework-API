@@ -125,6 +125,7 @@ function renderData(showData) {
 	showData.forEach(i => {
 		str += `<tr>
 	          	<td>${i.作物名稱}</td>
+	          	<td>${i.市場名稱}</td>
 	            <td>${i.上價}</td>
 	            <td>${i.中價}</td>
 	            <td>${i.下價}</td>
