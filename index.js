@@ -29,23 +29,12 @@ BUTTON_GROUP.addEventListener("click", e => {
 
 // search
 BUTTON_SEARCH.addEventListener("click", e => {
-	let FILTER_INPUT = BUTTON_SEARCH.querySelector("INPUT");
-	if (e.target.nodeName === "BUTTON") {
-		if (FILTER_INPUT.value === "") {
-			alert("請輸入作物名稱！");
-			return;
-		} else {
-			let filterData = [];
-			filterData = data.filter(i => {
-				return i.作物名稱.match(FILTER_INPUT.value);
-			});
-			if(filterData.length === 0) {
-				PRODUCTS_LIST.innerHTML = `<tr><td colspan="6" class="text-center p-3">查詢不到交易資訊 QQ</td></tr>`;
-				return
-			}
-			renderData(filterData);
-		};
+	// let FILTER_INPUT = BUTTON_SEARCH.querySelector("INPUT");
+	if (e.target.nodeName !== "BUTTON") {
+		return;
 	};
+	checkInput(e);
+	searchData(e);
 });
 
 // search input
@@ -53,7 +42,8 @@ SEARCH_INPUT.addEventListener("keydown", e => {
 	if (e.code !== "Enter") {
 		return;
 	};
-	checkInput();
+	checkInput(e);
+	searchData(e);
 });
 
 // select
@@ -80,6 +70,27 @@ SORT.addEventListener("click", e => {
 })
 
 /* fuctions */
+// 搜尋資料
+function searchData(e){
+	let filterData = [];
+	filterData = data.filter(i => {
+		return i.作物名稱.match(SEARCH_INPUT.value);
+	});
+	if(filterData.length === 0) {
+		PRODUCTS_LIST.innerHTML = `<tr><td colspan="6" class="text-center p-3">查詢不到交易資訊 QQ</td></tr>`;
+		return
+	}
+	renderData(filterData);
+}
+
+// 檢查 input 是否為空值
+function checkInput(e) {
+	if(SEARCH_INPUT.value === "") {
+		alert("請輸入作物名稱！");
+		return;
+	};
+};
+
 // 排序資料
 function sort(e){
 	switch (e.target.value) {
@@ -116,14 +127,6 @@ function getData(){
 			data = response.data;
 			renderData(data);
 	  });
-};
-
-// 檢查 input 是否為空值
-function checkInput() {
-	if(SEARCH_INPUT.value === "") {
-		alert("請輸入作物名稱！");
-		return;
-	};
 };
 
 // 算繪資料
