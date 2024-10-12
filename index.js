@@ -29,7 +29,6 @@ BUTTON_GROUP.addEventListener("click", e => {
 
 // search
 BUTTON_SEARCH.addEventListener("click", e => {
-	// let FILTER_INPUT = BUTTON_SEARCH.querySelector("INPUT");
 	if (e.target.nodeName !== "BUTTON") {
 		return;
 	};
