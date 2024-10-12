@@ -23,7 +23,7 @@ BUTTON_GROUP.addEventListener("click", e => {
 			i.classList.remove("active")
 		}); // 刪除全部 button class 裡面的 active
 		let type = e.target.dataset.type; // 取得 button 的 data-type value
-		dataFilter(e, `${type}`); // 將 e 以及取得的 value 代入，type 為字串
+		filterData(e, `${type}`); // 將 e 以及取得的 value 代入，type 為字串
 	};
 });
 
