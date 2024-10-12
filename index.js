@@ -149,7 +149,7 @@ function renderData(showData) {
 };
 
 // 過濾資料
-function dataFilter(e, type){
+function filterData(e, type){
 	let filterDate = [];
 	if(type === "N00") {
 		e.target.classList.add("active");
