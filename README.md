@@ -54,3 +54,10 @@
 
 ## 1025
 - 終究還是要回來面對這邊的東西
+- 終於解決了
+- 其實解法一如既往的簡單：**如果要讓兩邊的 value 一樣，那就把 A 的 value 傳遞給 B 不就好了？**
+  1. 首先就是把 index.html 那邊的 `js-mobile-select` 裡面的 `option` 加上 `value` 這個 property
+  2. sort 裡面加入 `let select`，把 `SELECT` 的 `e.target.value` 賦值過去
+  3. 將 `select` 賦值給 `SELECT_MOBILE.value`
+  4. 反過來其實也一樣，只不過 `SELECT_MOBILE.value` 改成 `SELECT.value`
+  5. 所以兩個都加就可以同步了

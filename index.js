@@ -92,7 +92,10 @@ function checkInput(e) {
 
 // 排序資料
 function sort(e){
-	switch (e.target.value) {
+	let select = e.target.value;
+	SELECT_MOBILE.value = select;
+	SELECT.value = select;
+	switch (select) {
 		case "依上價排序":
 			selectChange("上價");
 			break;
